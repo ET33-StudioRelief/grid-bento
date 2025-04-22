@@ -7,6 +7,12 @@ export function initHeroAnimation() {
   const heroGrid = document.querySelector('.hero_grid');
   if (!heroGrid) return;
 
+  // Add perspective to the container
+  gsap.set(heroGrid, {
+    perspective: 1000,
+    transformStyle: 'preserve-3d',
+  });
+
   // Get average height of grid boxes
   const gridBoxes = document.querySelectorAll('.grid-box');
   const totalHeight = Array.from(gridBoxes).reduce(
@@ -23,6 +29,7 @@ export function initHeroAnimation() {
       y: boxHeight,
       scale: 0.7,
       rotationX: 66,
+      transformOrigin: '50% 50% -100',
     });
 
     gsap.to(box, {
@@ -45,6 +52,7 @@ export function initHeroAnimation() {
       y: averageBoxHeight,
       scale: 0.7,
       rotationX: 66,
+      transformOrigin: '50% 50% -100',
     });
 
     gsap.to(span, {
