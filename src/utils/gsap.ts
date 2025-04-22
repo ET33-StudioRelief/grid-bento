@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export function initHeroAnimation() {
-  const heroGrid = document.querySelector('.hero_grid');
+  const heroGrid = document.querySelectorAll('.hero_grid');
   if (!heroGrid) return;
 
   // Add perspective to the container
