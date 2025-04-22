@@ -7,26 +7,14 @@ export function initHeroAnimation() {
   const heroGrid = document.querySelector('.hero_grid');
   if (!heroGrid) return;
 
-  // Get average height of grid boxes
-  const gridBoxes = document.querySelectorAll('.grid-box');
-  const totalHeight = Array.from(gridBoxes).reduce(
-    (sum, box) => sum + box.getBoundingClientRect().height,
-    0
-  );
-  const averageBoxHeight = totalHeight / gridBoxes.length;
-
   // Animation for grid boxes
-  gridBoxes.forEach((box) => {
-    const boxHeight = box.getBoundingClientRect().height;
-
+  document.querySelectorAll('.grid-box').forEach((box) => {
     gsap.set(box, {
-      y: boxHeight,
       scale: 0.7,
       rotationY: -90,
     });
 
     gsap.to(box, {
-      y: 0,
       scale: 1,
       rotationY: 0,
       ease: 'power2.out',
@@ -42,13 +30,11 @@ export function initHeroAnimation() {
   // Animation for spans
   document.querySelectorAll('.grid-box-span').forEach((span) => {
     gsap.set(span, {
-      y: averageBoxHeight,
       scale: 0.7,
       rotationY: -90,
     });
 
     gsap.to(span, {
-      y: 0,
       scale: 1,
       rotationY: 0,
       ease: 'power2.out',
