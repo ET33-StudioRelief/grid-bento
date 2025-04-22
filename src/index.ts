@@ -1,9 +1,8 @@
 import './index.css';
 
-import { greetUser } from '$utils/greet';
+import { initHeroAnimation } from '$utils/gsap';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
-  const name = 'John Doe';
-  greetUser(name);
+  initHeroAnimation();
 });
