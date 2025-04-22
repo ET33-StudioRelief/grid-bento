@@ -28,7 +28,7 @@ export function initHeroAnimation() {
     gsap.set(box, {
       y: boxHeight,
       scale: 0.7,
-      rotationX: 66,
+      rotationX: -25,
       transformOrigin: '50% 50% -100',
     });
 
@@ -51,7 +51,7 @@ export function initHeroAnimation() {
     gsap.set(span, {
       y: averageBoxHeight,
       scale: 0.7,
-      rotationX: 66,
+      rotationX: -25,
       transformOrigin: '50% 50% -100',
     });
 
