@@ -3,44 +3,56 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const getStartPosition = (element: Element): string => {
-  if (element.classList.contains('is-row2')) return 'top 30%';
-  if (element.classList.contains('is-row3') || element.classList.contains('is-row4'))
-    return 'top 45%';
-  if (element.classList.contains('is-row5')) return 'top 65%';
-  if (element.classList.contains('is-2row')) return 'top 40%';
-  return element.classList.contains('grid-box') ? 'top 25%' : 'top 14%';
-};
-
 export function initHeroAnimation() {
+  const heroGrid = document.querySelector('.hero_grid');
+  if (!heroGrid) return;
+
+  // Get average height of grid boxes
+  const gridBoxes = document.querySelectorAll('.grid-box');
+  const totalHeight = Array.from(gridBoxes).reduce(
+    (sum, box) => sum + box.getBoundingClientRect().height,
+    0
+  );
+  const averageBoxHeight = totalHeight / gridBoxes.length;
+
   // Animation for grid boxes
-  document.querySelectorAll('.grid-box').forEach((box) => {
-    gsap.set(box, { y: 40, scale: 0.72 });
+  gridBoxes.forEach((box) => {
+    const boxHeight = box.getBoundingClientRect().height;
+
+    gsap.set(box, {
+      y: boxHeight,
+      scale: 0.7,
+    });
+
     gsap.to(box, {
       y: 0,
       scale: 1,
-      duration: 1,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: box,
-        start: getStartPosition(box),
-        toggleActions: 'play none none reverse',
+        start: 'top bottom',
+        end: 'top 60%',
+        scrub: 0.5,
       },
     });
   });
 
-  // Animation for all spans
+  // Animation for spans
   document.querySelectorAll('.grid-box-span').forEach((span) => {
-    gsap.set(span, { y: 10, scale: 1 });
+    gsap.set(span, {
+      y: averageBoxHeight,
+      scale: 0.7,
+    });
+
     gsap.to(span, {
       y: 0,
-      scale: 1.05,
-      duration: 1,
+      scale: 1,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: span,
-        start: getStartPosition(span),
-        toggleActions: 'play none none reverse',
+        start: 'top bottom',
+        end: 'top 60%',
+        scrub: 0.5,
       },
     });
   });
