@@ -22,11 +22,13 @@ export function initHeroAnimation() {
     gsap.set(box, {
       y: boxHeight,
       scale: 0.7,
+      rotationY: -90,
     });
 
     gsap.to(box, {
       y: 0,
       scale: 1,
+      rotationY: 0,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: box,
@@ -42,11 +44,13 @@ export function initHeroAnimation() {
     gsap.set(span, {
       y: averageBoxHeight,
       scale: 0.7,
+      rotationY: -90,
     });
 
     gsap.to(span, {
       y: 0,
       scale: 1,
+      rotationY: 0,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: span,
